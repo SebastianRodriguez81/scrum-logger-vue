@@ -1,6 +1,6 @@
 <template>
   <div>
-    <div class="grid grid-cols-1 mt-5 md:grid-cols-3 xl:grid-cols-5">
+    <div id="logitem-card" class="grid grid-cols-1 mt-5 md:grid-cols-3 xl:grid-cols-5">
       <div v-for="logitem in logitems" :key="logitem._id">
         <div class="bg-white rounded shadow border p-6 w-64 m-3">
           <h5 class="text-3l font-bold mb-4 mt-0">{{ formatDate(logitem.fecha) }}</h5>
@@ -95,7 +95,17 @@ export default {
 }
 </script>
 
-<style>
+<style scoped>
+  h2 {
+    font-size: 1.2rem;
+    font-weight: bold;
+  }
+
+  h3 {
+    font-size: 1rem;
+    line-height: normal;
+  }
+
   #trash {
     color: red;    
   }

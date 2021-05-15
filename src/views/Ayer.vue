@@ -1,12 +1,21 @@
-<template>
-  <div>
-
+<template> 
+  <div class="w-full xl:w-82 md:w-87 lg:w-90">
+    <Prueba />      
+    <Prueba />      
+    <Prueba />      
+    <Prueba />      
+    <Prueba />      
   </div>
 </template>
 
 <script>
-export default {
 
+import Prueba from '../components/Prueba'
+
+export default {
+  components: {
+    Prueba    
+  }
 }
 </script>
 
