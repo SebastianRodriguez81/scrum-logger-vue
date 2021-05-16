@@ -18,7 +18,7 @@
         </div>        
       </div> 
     </div>
-    <LogBox :idp="item._id" :ayerp="item.ayer" :hoyp="item.ayer"></LogBox>
+    <LogBox :idp="item._id" :ayerp="item.ayer" :hoyp="item.hoy"></LogBox>
   </div>
 </template>
 
