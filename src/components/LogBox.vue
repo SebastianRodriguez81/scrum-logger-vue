@@ -13,7 +13,7 @@
             placeholder="Qué hice ayer?"
             class="text-grey-darkest flex-1 p-2 m-1 bg-transparent"
             name="tt"
-            v-model="logItem.ayer"
+            v-model="ayer"
           ></textarea>
         </div>
       </div>
@@ -30,7 +30,7 @@
             placeholder="Qué voy a hacer hoy?"
             class="text-grey-darkest flex-1 p-2 m-1 bg-transparent"
             name="tt"
-            v-model="logItem.hoy"
+            v-model="hoy"
           ></textarea>
         </div>
       </div>        
@@ -53,28 +53,40 @@
 import LogService from '../services/LogItemsService'
 
 export default {
-  name: "add-log",
+
   props: {
-    ayer: String,
-    hoy: String,
+    idp: String,
+    ayerp: String,
+    hoyp: String
   },
-  data() {
-    return {
-      logItem: {
-        ayer: "",
-        hoy: ""        
-      },
+  
+  data(){
+    return {      
+      ayer: this.ayerp,
+      hoy: this.hoyp,
       submitted: false
     }
   },
+
+  watch: {
+    ayerp: function (val) {
+      this.ayer = val;
+    },
+    hoyp: function (val) {
+      this.hoy = val;
+    }
+  },
+
   methods: {
     saveLog() {
       const data = {
-        ayer: this.logItem.ayer,
-        hoy: this.logItem.hoy        
+        ayer: this.ayer,
+        hoy: this.hoy       
       }
 
-      LogService.create(data)
+      if (this.idp) {
+        console.log('con id')
+        LogService.update(this.idp, data)
         .then(response => {
           this.submitted = true
           console.log(response.data)
@@ -82,7 +94,22 @@ export default {
         .catch(e => {
           console.log(e)
         })
+
+      }else{
+        console.log('sin  id')
+        LogService.create(data)
+        .then(response => {
+          this.submitted = true
+          console.log(response.data)
+        })
+        .catch(e => {
+          console.log(e)
+        })
+      }
+
+   
     },
+
     newLog() {
       this.submitted = false;
       this.logItem = {};

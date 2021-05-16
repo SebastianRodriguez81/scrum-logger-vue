@@ -13,12 +13,12 @@
           </div>
           <div class="mt-3 flex justify-end">
             <span @click="deleteLog(logitem._id)" id="trash" class="p-1 "><i class="fas fa-dumpster fa-lg"></i></span>
-            <span @click="editLog(logitem._id)" id="edit" class="p-1 "><i class="fas fa-edit fa-lg"></i></span>
+            <span @click="editLog(logitem)" id="edit" class="p-1 "><i class="fas fa-edit fa-lg"></i></span>
           </div>
         </div>        
       </div> 
     </div>
-    <LogBox />
+    <LogBox :idp="item._id" :ayerp="item.ayer" :hoyp="item.ayer"></LogBox>
   </div>
 </template>
 
@@ -29,13 +29,15 @@ import LogBox from '../components/LogBox'
 import moment from 'moment'
 
 export default {
-  name: "get-logs",
+
   components: {
     LogBox
   },
+
   data() {
     return {
-      logitems: []
+      logitems: [],
+      item: {}
     }
   }, 
   
@@ -44,28 +46,12 @@ export default {
   },
 
   methods: {
-    editLog(id){
-      let data  
-      
-      LogService.get(id)
-        .then(res => {
-          data = res.data
-          console.log(data.ayer)
-          console.log(data.hoy)
-          
-          
-          // LogBox.logItem.ayer = data.ayer
-        })
-        .catch(e => {
-          console.log(e)
-        })
-
-      // LogService.update(id, data)
-      //   .then()
-      //   .catch(e => {
-      //     console.log(e)
-      //   })
+    editLog(item){
+      this.item = item
+      console.log(this.item)
+      console.log(this.item.ayer)
     },
+
     deleteLog(id) {
       LogService.delete(id)
         .then(res => {
@@ -76,6 +62,7 @@ export default {
           console.log(e)
         })
     },
+
     getLogs() {
       LogService.getAll()
         .then(res => {
@@ -86,10 +73,11 @@ export default {
           console.log(e)
         })
     },
+
     formatDate(date) {
-    if (date) {
-      return moment(String(date)).format('DD/MM/YY')
-    }
+      if (date) {
+        return moment(String(date)).format('DD/MM/YY')
+      }
     }
   }  
 }
