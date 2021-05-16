@@ -14,6 +14,7 @@
           <div class="mt-3 flex justify-end">
             <span @click="deleteLog(logitem._id)" id="trash" class="p-1 "><i class="fas fa-dumpster fa-lg"></i></span>
             <span @click="editLog(logitem)" id="edit" class="p-1 "><i class="fas fa-edit fa-lg"></i></span>
+            <q-btn class="glossy" round color="secondary" icon="local_florist" @click="$store.commit('increment')"/>
           </div>
         </div>        
       </div> 

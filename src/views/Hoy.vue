@@ -1,7 +1,7 @@
 <template>
  <h4>contador store por computed {{count}}</h4>
  <h4>contador store directo {{$store.state.count}}</h4>
- <button @click="$store.commit('increment')">ESTO ES UN BOTON (+)</button> 
+ <q-btn class="glossy" round color="secondary" icon="local_florist" @click="$store.commit('increment')"/>
   <div class="w-full xl:w-82 md:w-87 lg:w-90">
     <LogBox />
   </div>
