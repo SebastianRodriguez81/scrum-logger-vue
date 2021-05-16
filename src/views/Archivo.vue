@@ -1,5 +1,6 @@
 <template>
   <div>
+    <div v-if="loading"><spinner></spinner></div>
     <div id="logitem-card" class="grid grid-cols-1 mt-5 md:grid-cols-3 xl:grid-cols-5">
       <div v-for="logitem in logitems" :key="logitem._id">
         <div class="bg-white rounded shadow border p-6 w-64 m-3">
@@ -19,31 +20,44 @@
         </div>        
       </div> 
     </div>
-    <LogBox :idp="item._id" :ayerp="item.ayer" :hoyp="item.hoy"></LogBox>
+    <LogBox v-if="loadFull" :idp="item._id" :ayerp="item.ayer" :hoyp="item.hoy"></LogBox>
   </div>
 </template>
 
 <script>
 import LogService from '../services/LogItemsService'
 import LogBox from '../components/LogBox' 
+import spinner from '../components/Spinner' 
 
 import moment from 'moment'
 
 export default {
 
   components: {
-    LogBox
+    LogBox,
+    spinner
   },
 
   data() {
     return {
       logitems: [],
-      item: {}
+      item: {},
+      load: true
     }
   }, 
+
+  computed:{
+    loadFull: function(){
+      return !this.load;
+    },
+    loading: function(){
+      return this.load;
+    }
+  },
   
   created() {
-    this.getLogs() 
+    this.getLogs();  
+
   },
 
   methods: {
@@ -69,6 +83,7 @@ export default {
         .then(res => {
           this.logitems = res.data
           console.log(res.data)
+          this.load = false
         })
         .catch(e => {
           console.log(e)

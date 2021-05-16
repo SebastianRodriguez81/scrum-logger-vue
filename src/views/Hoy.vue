@@ -2,6 +2,14 @@
  <h4>contador store por computed {{count}}</h4>
  <h4>contador store directo {{$store.state.count}}</h4>
  <q-btn class="glossy" round color="secondary" icon="local_florist" @click="$store.commit('increment')"/>
+ <q-circular-progress
+      :value="value"
+      size="50px"
+      :thickness="0.22"
+      color="orange"
+      track-color="grey-3"
+      class="q-ma-md"
+    />
   <div class="w-full xl:w-82 md:w-87 lg:w-90">
     <LogBox />
   </div>
