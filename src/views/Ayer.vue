@@ -1,4 +1,5 @@
 <template> 
+  <h4>contador store directo {{$store.state.count}}</h4>
   <div class="w-full xl:w-82 md:w-87 lg:w-90">
     <Prueba />      
     <Prueba />      
