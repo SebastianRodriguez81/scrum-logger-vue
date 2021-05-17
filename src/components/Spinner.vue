@@ -1,0 +1,10 @@
+<template>
+<q-circular-progress
+      indeterminate
+      size="250px"
+      :thickness="0.10"
+      color="cyan"
+      track-color="grey-3"
+      class="q-ma-md"
+    />
+</template>

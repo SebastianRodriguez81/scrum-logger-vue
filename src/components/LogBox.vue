@@ -13,7 +13,7 @@
             placeholder="Qué hice ayer?"
             class="text-grey-darkest flex-1 p-2 m-1 bg-transparent"
             name="tt"
-            v-model="logItem.ayer"
+            v-model="ayer"
           ></textarea>
         </div>
       </div>
@@ -30,7 +30,7 @@
             placeholder="Qué voy a hacer hoy?"
             class="text-grey-darkest flex-1 p-2 m-1 bg-transparent"
             name="tt"
-            v-model="logItem.hoy"
+            v-model="hoy"
           ></textarea>
         </div>
       </div>        
@@ -50,42 +50,75 @@
 </template>
 
 <script>
-import LogService from '../services/LogItemsService'
+import LogService from '../services/LogItem/LogItemsService'
 
 export default {
-  name: "add-log",
+
   props: {
-    ayer: String,
-    hoy: String,
+    idp: String,
+    ayerp: String,
+    hoyp: String
   },
-  data() {
-    return {
-      logItem: {
-        ayer: "",
-        hoy: ""        
-      },
+  
+  data(){
+    return {  
+      id: this.idp,    
+      ayer: this.ayerp,
+      hoy: this.hoyp,
       submitted: false
     }
   },
+
+  watch: {
+    idp: function (val) {
+      this.id = val;
+    },
+
+    ayerp: function (val) {
+      this.ayer = val;
+    },
+    hoyp: function (val) {
+      this.hoy = val;
+    }
+  },
+
   methods: {
     saveLog() {
       const data = {
-        ayer: this.logItem.ayer,
-        hoy: this.logItem.hoy        
+        ayer: this.ayer,
+        hoy: this.hoy       
       }
 
-      LogService.create(data)
+      if (this.id) {
+        LogService.update(this.id, data)
         .then(response => {
           this.submitted = true
           console.log(response.data)
+          this.$emit('LogBoxEmit', true);
         })
         .catch(e => {
           console.log(e)
         })
+
+      }else{
+        LogService.create(data)
+        .then(response => {
+          this.submitted = true
+          console.log(response.data)
+          this.$emit('LogBoxEmit', true);
+        })
+        .catch(e => {
+          console.log(e)
+        })
+      }
+
+      this.clearLog();   
     },
-    newLog() {
-      this.submitted = false;
-      this.logItem = {};
+
+    clearLog() {
+      this.ayer = "";
+      this.hoy = "";
+      this.id = "";
     }
   }
 }
