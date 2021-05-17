@@ -1,12 +1,14 @@
 <template>
   <div>
     <div v-if="loading"><spinner></spinner></div>
-    <div id="logitem-card" class="grid grid-cols-1 mt-5 md:grid-cols-3 xl:grid-cols-5">
-      <div v-for="logitem in logitems" :key="logitem.id">
-        <LogCard @LogChange="logChanged" :id="logitem.id" :fecha="logitem.fecha" :ayer="logitem.ayer" :hoy="logitem.hoy"></LogCard> 
-      </div> 
-    </div>
-    <LogBox @LogBoxEmit="LogBoxEmited" v-if="loadFull" :idp="item.id" :ayerp="item.ayer" :hoyp="item.hoy"></LogBox>
+      <div v-if="loadFull">
+      <div id="logitem-card" class="grid grid-cols-1 mt-5 md:grid-cols-3 xl:grid-cols-5">
+        <div v-for="logitem in logitems" :key="logitem.id">
+          <LogCard @LogChange="logChanged" :id="logitem.id" :fecha="logitem.fecha" :ayer="logitem.ayer" :hoy="logitem.hoy"></LogCard> 
+        </div> 
+      </div>
+      <LogBox @LogBoxEmit="LogBoxEmited"  v-if="modificacion" :idp="item.id" :ayerp="item.ayer" :hoyp="item.hoy"></LogBox>    
+    </div>   
   </div>
 </template>
 
@@ -28,7 +30,8 @@ export default {
     return {
       logitems: [],
       item: {},
-      load: true
+      load: true,
+      modificacion: false
     }
   }, 
 
@@ -58,10 +61,12 @@ export default {
 
     LogBoxEmited(){
       this.getLogs();
+      this.modificacion = false;
     },
 
     editLogCard(item){
       this.item = item;
+      this.modificacion = true;
     },
 
     deleteLogCard() {      
