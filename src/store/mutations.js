@@ -1,5 +1,5 @@
 const mutations = {
-    increment (state) {
+    increment(state) {
         state.count++
     }
 }
