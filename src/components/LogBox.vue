@@ -50,7 +50,7 @@
 </template>
 
 <script>
-import LogService from '../services/LogItemsService'
+import LogService from '../services/LogItem/LogItemsService'
 
 export default {
 
@@ -61,7 +61,8 @@ export default {
   },
   
   data(){
-    return {      
+    return {  
+      id: this.idp,    
       ayer: this.ayerp,
       hoy: this.hoyp,
       submitted: false
@@ -69,6 +70,10 @@ export default {
   },
 
   watch: {
+    idp: function (val) {
+      this.id = val;
+    },
+
     ayerp: function (val) {
       this.ayer = val;
     },
@@ -84,35 +89,36 @@ export default {
         hoy: this.hoy       
       }
 
-      if (this.idp) {
-        console.log('con id')
-        LogService.update(this.idp, data)
+      if (this.id) {
+        LogService.update(this.id, data)
         .then(response => {
           this.submitted = true
           console.log(response.data)
+          this.$emit('LogBoxEmit', true);
         })
         .catch(e => {
           console.log(e)
         })
 
       }else{
-        console.log('sin  id')
         LogService.create(data)
         .then(response => {
           this.submitted = true
           console.log(response.data)
+          this.$emit('LogBoxEmit', true);
         })
         .catch(e => {
           console.log(e)
         })
       }
 
-   
+      this.clearLog();   
     },
 
-    newLog() {
-      this.submitted = false;
-      this.logItem = {};
+    clearLog() {
+      this.ayer = "";
+      this.hoy = "";
+      this.id = "";
     }
   }
 }
