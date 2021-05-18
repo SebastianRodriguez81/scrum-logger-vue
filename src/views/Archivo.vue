@@ -1,7 +1,7 @@
 <template>
   <div v-if="loading"><spinner></spinner></div>
   <div v-if="loadFull" class="q-pa-md">
-    <div class="row justify-left q-gutter-xl">
+    <div v-if="!modificacion" class="row justify-left q-gutter-xl">
       <q-intersection
         v-for="logitem in logitems"
         :key="logitem.id"

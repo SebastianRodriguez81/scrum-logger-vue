@@ -1,5 +1,9 @@
 <template>
-  <Main />
+
+  <div id="app" class="bg-blue-400">
+     <Main />
+  </div>
+
 </template>
 
 <script>
