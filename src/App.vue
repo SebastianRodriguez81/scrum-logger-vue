@@ -1,6 +1,6 @@
 <template>
 
-  <div id="app" class="bg-blue-400">
+  <div class="h-screen">
      <Main />
   </div>
 
