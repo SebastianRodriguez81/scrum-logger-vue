@@ -1,32 +1,31 @@
 <template>
-  <div class="mb-5">
-    <ul class="flex">
-        <li class="flex-1 mr-2">
-            <img width="50" src="https://image.flaticon.com/icons/png/512/47/47303.png" alt="Logo">
-        </li>
-        <li class="flex-1 mr-2">
-            <router-link to="/">HOY</router-link>
-        </li>
-        <li class="flex-1 mr-2">
-            <router-link to="/ayer">AYER</router-link>
-        </li>
-        <li class="flex-1 mr-2">
-            <router-link to="/archivo">ARCHIVO</router-link>
-        </li>
-    </ul>
-    <hr>
+  <div class="q-gutter-y-md" style="">
+    <q-tabs v-model="tab" inline-label class="bg-pink-700 text-white shadow-2">
+      <q-route-tab name="Daily" icon="event" label="Daily" to="/" exact />
+      <q-route-tab
+        name="Sprint"
+        icon="replay_circle_filled"
+        label="Sprint"
+        to="/test"
+        exact
+      />
+      <q-route-tab
+        name="Backlog"
+        icon="post_add"
+        label="Backlog"
+        to="/prueba"
+        exact
+      />
+    </q-tabs>
   </div>
+  <SideBar :Routes="$store.state.Routes" />
 </template>
 
 <script>
+import SideBar from "../components/SideBar";
 export default {
-
-}
+  components: {
+    SideBar,
+  },
+};
 </script>
-
-<style scoped>
-* {
-  font-size: 15px;
-  font-weight: bold;  
-}
-</style>

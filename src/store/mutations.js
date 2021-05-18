@@ -1,6 +1,10 @@
 const mutations = {
-    increment (state) {
+    increment(state) {
         state.count++
+    },
+    setRoutes(state, newRoutes) {
+        state.Routes = [];
+        state.Routes = newRoutes;
     }
 }
 

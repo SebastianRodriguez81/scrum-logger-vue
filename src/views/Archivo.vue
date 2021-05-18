@@ -1,84 +1,106 @@
 <template>
-  <div>
-    <div v-if="loading"><spinner></spinner></div>
-    <div id="logitem-card" class="grid grid-cols-1 mt-5 md:grid-cols-3 xl:grid-cols-5">
-      <div v-for="logitem in logitems" :key="logitem.id">
-        <LogCard @LogChange="logChanged" :id="logitem.id" :fecha="logitem.fecha" :ayer="logitem.ayer" :hoy="logitem.hoy"></LogCard> 
-      </div> 
+  <div v-if="loading"><spinner></spinner></div>
+  <div v-if="loadFull" class="q-pa-md">
+    <div class="row justify-left q-gutter-xl">
+      <q-intersection
+        v-for="logitem in logitems"
+        :key="logitem.id"
+        once
+        transition="scale"
+        class=""
+      >
+        <LogCard
+          @LogChange="logChanged"
+          :id="logitem.id"
+          :fecha="logitem.fecha"
+          :ayer="logitem.ayer"
+          :hoy="logitem.hoy"
+        ></LogCard>
+      </q-intersection>
     </div>
-    <LogBox @LogBoxEmit="LogBoxEmited" v-if="loadFull" :idp="item.id" :ayerp="item.ayer" :hoyp="item.hoy"></LogBox>
+    <LogBox
+      @LogBoxEmit="LogBoxEmited"
+      v-if="modificacion"
+      :idp="item.id"
+      :ayerp="item.ayer"
+      :hoyp="item.hoy"
+    ></LogBox>
   </div>
 </template>
 
 <script>
-import LogService from '../services/LogItem/LogItemsService'
-import LogCard from '../components/LogCard' 
-import LogBox from '../components/LogBox' 
-import spinner from '../components/Spinner' 
+import LogService from "../services/LogItem/LogItemsService";
+import LogCard from "../components/LogCard";
+import LogBox from "../components/LogBox";
+import spinner from "../components/Spinner";
 
 export default {
-
   components: {
     LogCard,
     LogBox,
-    spinner
+    spinner,
   },
 
   data() {
     return {
       logitems: [],
       item: {},
-      load: true
-    }
-  }, 
+      load: true,
+      modificacion: false,
+    };
+  },
 
-  computed:{
-    loadFull: function(){
+  computed: {
+    loadFull: function () {
       return !this.load;
     },
 
-    loading: function(){
+    loading: function () {
       return this.load;
-    }
+    },
   },
-  
+
   created() {
     this.getLogs();
   },
 
   methods: {
-    logChanged(item){
-      if(item.isChanged){
+    logChanged(item) {
+      if (item.isChanged) {
         this.editLogCard(item);
       }
-      if(item.isDeleted){
+      if (item.isDeleted) {
         this.deleteLogCard();
       }
     },
 
-    LogBoxEmited(){
+    LogBoxEmited() {
       this.getLogs();
+      this.modificacion = false;
     },
 
-    editLogCard(item){
+    editLogCard(item) {
       this.item = item;
+      this.modificacion = true;
     },
 
-    deleteLogCard() {      
+    deleteLogCard() {
       this.getLogs();
     },
 
     getLogs() {
       this.load = true;
       LogService.getAll()
-      .then(logitems => {
-        this.logitems = logitems
-        this.load = false;
-      })
-      .catch(e => {
-        console.log(e)
-      })
+        .then((logitems) => {
+          this.logitems = logitems;
+          this.load = false;
+        })
+        .catch((e) => {
+          console.log(e);
+        });
     },
-  }  
-}
+  },
+};
 </script>
+
+
