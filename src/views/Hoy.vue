@@ -13,23 +13,24 @@ export default {
   },
 
   created() {
-    this.$store.commit('setRoutes', [
-      { name: "Nuevo", icon: "event", label: "Nuevo", to: "/" },
+    this.$store.commit("setRoutes", [
+      { nro: 1, name: "Nuevo", icon: "event", label: "Nuevo", to: "/" },
       {
+        nro: 2,
         name: "PARALAX",
         icon: "cloud_upload",
         label: "PAX",
         to: "/ayer",
       },
       {
+        nro: 3,
         name: "Historicos",
         icon: "alarm",
         label: "Historicos",
         to: "/archivo",
       },
-    ],)
+    ]);
   },
-
 };
 </script>
 

@@ -1,16 +1,18 @@
 <template>
+
   <div id="app" class="bg-blue-400">
-    <NavBar />
+     <Main />
   </div>
+
 </template>
 
 <script>
-import NavBar from "./components/NavBar";
+import Main from "./components/Main";
 import { mapState } from "vuex";
 
 export default {
   components: {
-    NavBar,
+    Main,
   },
 
   computed: mapState({
