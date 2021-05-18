@@ -1,5 +1,7 @@
 <template>
-  <NavBar />
+  <div id="app" class="bg-blue-400">
+    <NavBar />
+  </div>
 </template>
 
 <script>

@@ -16,7 +16,7 @@
     </template>
 
     <template v-slot:after>
-      <q-tab-panels
+      <q-tab-panels 
         v-model="tab"
         animated
         swipeable
@@ -58,3 +58,7 @@ export default {
   },
 };
 </script>
+
+<style scoped>
+ 
+</style>
