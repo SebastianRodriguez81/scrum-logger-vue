@@ -3,7 +3,7 @@
     indeterminate
     size="250px"
     :thickness="0.1"
-    color="cyan"
+    color="blue-500"
     track-color="grey-3"
     class="q-ma-md"
   />

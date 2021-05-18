@@ -1,7 +1,9 @@
 <template>
-  <div v-if="loading"><spinner></spinner></div>
+  <div v-if="loading" class="fixed-center">
+    <Spinner></Spinner>
+  </div>
   <div v-if="loadFull" class="q-pa-md">
-    <div v-if="!modificacion" class="row justify-left q-gutter-xl">
+    <div v-if="!modificacion" class="row justify-left q-gutter-xl bg-black">
       <q-intersection
         v-for="logitem in logitems"
         :key="logitem.id"
@@ -32,13 +34,13 @@
 import LogService from "../services/LogItem/LogItemsService";
 import LogCard from "../components/LogCard";
 import LogBox from "../components/LogBox";
-import spinner from "../components/Spinner";
+import Spinner from "../components/Spinner";
 
 export default {
   components: {
     LogCard,
     LogBox,
-    spinner,
+    Spinner,
   },
 
   data() {

@@ -1,7 +1,7 @@
 <template>
-  <q-splitter v-model="splitterModel" style="">
+  <q-splitter v-model="splitterModel" style="height: 100vh">
     <template v-slot:before>
-      <q-tabs v-model="tab" vertical class="text-teal">
+      <q-tabs v-model="tab" vertical class="text-white bg-blue-500">
         <div v-for="Route in Routes" :key="Route.nro">
           <q-route-tab
             :name="Route.name"
@@ -39,6 +39,7 @@
 
 <script>
 import Body from "../components/Body";
+import { ref } from 'vue'
 
 export default {
   props: {
@@ -52,12 +53,12 @@ export default {
   data() {
     return {
       tab: "mails",
-      splitterModel: 5,
+      splitterModel: ref(15),
     };
   },
 };
 </script>
 
 <style scoped>
- 
+   
 </style>
