@@ -1,9 +1,8 @@
 <template>
-
   <q-splitter v-model="splitterModel" style="">
     <template v-slot:before>
       <q-tabs v-model="tab" vertical class="text-teal">
-        <div v-for="Route in Routes" :key="Route.to">
+        <div v-for="Route in Routes" :key="Route.nro">
           <q-route-tab
             :name="Route.name"
             :icon="Route.icon"
@@ -21,21 +20,21 @@
         animated
         swipeable
         vertical
-        transition-prev="jump-up"
-        transition-next="jump-up"
+        transition-prev="fade"
+        transition-next="fade"
       >
-        <div v-for="Route in Routes" :key="Route.to">
-          <q-tab-panel :name="Route.name">
-            <div class="text-h4 q-mb-md">{{ Route.name }}</div>            
-          </q-tab-panel>
-        </div>
-        
+        <q-tab-panel
+          v-for="Route in Routes"
+          :key="Route.nro"
+          :name="Route.name"
+        >
+          <div class="text-h4 q-mb-md">{{ Route.label }}</div>
+          <div class="text-h4 q-mb-md">{{Route.nro }}: Componenticemos esto! sale un Titulo.vue</div>
+        </q-tab-panel>
       </q-tab-panels>
-       <Body />
+      <Body />
     </template>
-    
   </q-splitter>
- 
 </template>
 
 <script>

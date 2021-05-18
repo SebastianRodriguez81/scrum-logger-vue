@@ -1,14 +1,14 @@
 <template>
-  <NavBar />
+  <Main />
 </template>
 
 <script>
-import NavBar from "./components/NavBar";
+import Main from "./components/Main";
 import { mapState } from "vuex";
 
 export default {
   components: {
-    NavBar,
+    Main,
   },
 
   computed: mapState({

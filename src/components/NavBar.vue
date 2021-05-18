@@ -18,14 +18,10 @@
       />
     </q-tabs>
   </div>
-  <SideBar :Routes="$store.state.Routes" />
 </template>
 
 <script>
-import SideBar from "../components/SideBar";
 export default {
-  components: {
-    SideBar,
-  },
+  components: {},
 };
 </script>
