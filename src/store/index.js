@@ -4,7 +4,8 @@ import actions from "./actions"
 
 const store = createStore({
   state: {
-    count: 0
+    count: 0,
+    Routes: []
   },
   mutations: mutations,
   actions: actions

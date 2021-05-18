@@ -1,38 +1,29 @@
 <template>
-  <div>
-    <div class="bg-white rounded shadow border p-6 w-64 m-3">
-      <h5 class="text-3l font-bold mb-4 mt-0">{{ formatDate(fecha) }}</h5>
-      <q-scroll-area
-        :delay="1200"
-        :thumb-style="thumbStyle"
-        :content-style="contentStyle"
-        :content-active-style="contentActiveStyle"
-        style="height: 200px; max-width: 300px"
-      >
-        <div class="text-gray-700 text-sm">
-          <h2><b>AYER</b></h2>
-          <h3>{{ ayer }}</h3>
-          <br />
-          <h2><b>HOY</b></h2>
-          <h3>{{ hoy }}</h3>
-        </div>
-      </q-scroll-area>
-
-      <div class="mt-3 flex justify-end">
-        <span @click="deleteLog()" id="trash" class="p-1"
-          ><i class="fas fa-dumpster fa-lg"></i
-        ></span>
-        <span @click="editLog()" id="edit" class="p-1"
-          ><i class="fas fa-edit fa-lg"></i
-        ></span>
-        <q-btn
-          class="glossy"
-          round
-          color="secondary"
-          icon="local_florist"
-          @click="$store.commit('increment')"
-        />
+  <div class="bg-yellow-50 rounded shadow border p-6 w-64 m-3">
+    <h5 class="text-3l font-bold mb-4 mt-0">{{ formatDate(fecha) }}</h5>
+    <q-scroll-area
+      :delay="1200"
+      :thumb-style="thumbStyle"
+      :content-style="contentStyle"
+      :content-active-style="contentActiveStyle"
+      style="height: 200px; max-width: 300px"
+    >
+      <div class="text-gray-700 text-sm">
+        <h2><b>AYER</b></h2>
+        <h3>{{ ayer }}</h3>
+        <br />
+        <h2><b>HOY</b></h2>
+        <h3>{{ hoy }}</h3>
       </div>
+    </q-scroll-area>
+
+    <div class="mt-3 flex justify-end">
+      <span @click="deleteLog()" id="trash" class="p-1"
+        ><i class="fas fa-dumpster fa-lg"></i
+      ></span>
+      <span @click="editLog()" id="edit" class="p-1"
+        ><i class="fas fa-edit fa-lg"></i
+      ></span>
     </div>
   </div>
 </template>

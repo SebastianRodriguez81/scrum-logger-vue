@@ -8,6 +8,13 @@
       <h1 class="text-pink">Docks</h1>
     </q-parallax>
   </div>
+  <q-btn
+        class="glossy"
+        round
+        color="secondary"
+        icon="local_florist"
+        @click="$store.commit('increment')"
+      />
 </template>
 
 <script>
