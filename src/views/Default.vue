@@ -62,42 +62,5 @@
 </template>
 
 <script>
-export default {
-  created() {
-    this.$store.commit("setRoutes", [
-      { nro: 1, name: "Volver", icon: "replay", label: "Volver", to: "/" },
-      {
-        nro: 2,
-        name: "TAB 2",
-        icon: "warning",
-        label: "TAB 2",
-        to: "/test",
-      },
-      {
-        nro: 3,
-        name: "TAB 3",
-        icon: "warning_amber",
-        label: "TAB 3",
-        to: "/prueba",
-      },
-      {
-        nro: 4,
-        name: "TAB 4",
-        icon: "warning",
-        label: "TAB 4",
-        to: "/prueba2",
-      },
-      {
-        nro: 5,
-        name: "TAB 5",
-        icon: "warning_amber",
-        label: "TAB 5",
-        to: "/prueba3",
-      },
-    ]);
-  },
-};
+export default {};
 </script>
-
-<style>
-</style>

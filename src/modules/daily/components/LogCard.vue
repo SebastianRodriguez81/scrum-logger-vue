@@ -29,7 +29,7 @@
 </template>
 
 <script>
-import LogService from "../services/LogItem/LogItemsService";
+import LogItem from "../domain/LogItem";
 import moment from "moment";
 
 export default {
@@ -53,19 +53,16 @@ export default {
       this.$emit("LogChange", data);
     },
 
-    deleteLog() {
+    async deleteLog() {
       let data = {};
 
-      LogService.delete(this.id)
-        .then(() => {
-          data.isDeleted = true;
-          this.$emit("LogChange", data);
-        })
-        .catch((e) => {
-          console.log(e);
-          data.isDeleted = false;
-          this.$emit("LogChange", data);
-        });
+      try {
+        await LogItem.delete(this.id)
+        data.isDeleted = true;
+      } catch (error) {
+        data.isDeleted = false;
+      }
+      this.$emit("LogChange", data);
     },
 
     formatDate(date) {

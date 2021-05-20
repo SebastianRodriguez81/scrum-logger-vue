@@ -10,7 +10,7 @@
 </template>
 
 <script>
-import Prueba from "../components/Prueba";
+import Prueba from "../../components/Prueba";
 
 export default {
   components: {

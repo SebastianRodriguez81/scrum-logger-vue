@@ -14,7 +14,7 @@
       </q-tabs>
     </template>
 
-    <template v-slot:after>
+    <template v-slot:after >
       <q-tab-panels 
         v-model="tab"
         animated
@@ -23,13 +23,12 @@
         transition-prev="fade"
         transition-next="fade"
       >
-        <q-tab-panel
+        <q-tab-panel class="bg-blue-100"
           v-for="Route in Routes"
           :key="Route.nro"
           :name="Route.name"
-        >
-          <div class="text-h4 q-mb-md">{{ Route.label }}</div>
-          <div class="text-h4 q-mb-md">{{Route.nro }}: Componenticemos esto! sale un Titulo.vue</div>
+        >        
+          <div class="text-h4 q-mb-md text-pink-700 " >{{ Route.label }}</div>          
         </q-tab-panel>
       </q-tab-panels>
       <Body />
@@ -38,7 +37,7 @@
 </template>
 
 <script>
-import Body from "../components/Body";
+import Body from "./Body";
 import { ref } from 'vue'
 
 export default {

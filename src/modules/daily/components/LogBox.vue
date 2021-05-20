@@ -58,7 +58,7 @@
 </template>
 
 <script>
-import LogService from "../services/LogItem/LogItemsService";
+import LogItem from "../domain/LogItem";
 
 export default {
   props: {
@@ -90,32 +90,28 @@ export default {
   },
 
   methods: {
-    saveLog() {
+    async saveLog() {
       const data = {
         ayer: this.ayer,
         hoy: this.hoy,
       };
 
       if (this.id) {
-        LogService.update(this.id, data)
-          .then((response) => {
-            this.submitted = true;
-            console.log(response.data);
-            this.$emit("LogBoxEmit", true);
-          })
-          .catch((e) => {
-            console.log(e);
-          });
+        try {
+          await LogItem.update(this.id, data);
+          this.submitted = true;
+          this.$emit("LogBoxEmit", true);
+        } catch (error) {
+          console.log(error);
+        }
       } else {
-        LogService.create(data)
-          .then((response) => {
-            this.submitted = true;
-            console.log(response.data);
-            this.$emit("LogBoxEmit", true);
-          })
-          .catch((e) => {
-            console.log(e);
-          });
+        try {
+          await LogItem.create(data);
+          this.submitted = true;
+          this.$emit("LogBoxEmit", true);
+        } catch (error) {
+          console.log(error);
+        }
       }
 
       this.clearLog();
