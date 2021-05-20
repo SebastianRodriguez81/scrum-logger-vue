@@ -4,17 +4,17 @@ const routes = [
     {
         path: "/",
         name: "hoy",
-        component: () => import('../views/Hoy.vue')
+        component: () => import('../views/daily/Hoy.vue')
     },
     {
         path: "/ayer",
         name: "ayer",
-        component: () => import('../views/Ayer.vue')
+        component: () => import('../views/daily/Ayer.vue')
     },
     {
         path: "/archivo",
         name: "archivo",
-        component: () => import('../views/Archivo.vue')
+        component: () => import('../views/daily/Archivo.vue')
     },
     {
         path: "/test",

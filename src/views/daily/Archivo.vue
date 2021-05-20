@@ -31,10 +31,10 @@
 </template>
 
 <script>
-import LogService from "../services/LogItem/LogItemsService";
-import LogCard from "../components/LogCard";
-import LogBox from "../components/LogBox";
-import Spinner from "../components/Spinner";
+import LogItem from "../../modules/daily/domain/LogItem";
+import LogCard from "../../modules/daily/components/LogCard";
+import LogBox from "../../modules/daily/components/LogBox";
+import Spinner from "../../components/Spinner";
 
 export default {
   components: {
@@ -90,16 +90,14 @@ export default {
       this.getLogs();
     },
 
-    getLogs() {
+    async getLogs() {
       this.load = true;
-      LogService.getAll()
-        .then((logitems) => {
-          this.logitems = logitems;
-          this.load = false;
-        })
-        .catch((e) => {
-          console.log(e);
-        });
+      try {
+        this.logitems = await LogItem.getAll();
+      } catch (error) {
+        console.log(error)
+      }      
+      this.load = false;
     },
   },
 };

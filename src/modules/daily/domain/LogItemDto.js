@@ -5,7 +5,6 @@ class LogItemDto {
         this.ayer = ayer;
         this.hoy = hoy;
     }
-
 }
 
 export default LogItemDto

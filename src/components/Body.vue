@@ -1,9 +1,9 @@
 <template>
-  <router-view />
+  <transition>
+    <router-view></router-view>
+  </transition>
 </template>
 
 <script>
-export default {
-  components: {},
-};
+export default {};
 </script>
