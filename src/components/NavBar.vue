@@ -1,7 +1,15 @@
 <template>
   <div class="q-gutter-y-md" style="">
     <q-tabs v-model="tab" inline-label class="bg-pink-500 text-white shadow-2">
-      <q-route-tab name="Daily" icon="event" label="Daily" to="/" exact />
+      <div class="">
+        <q-btn flat @click="drawer = !drawer" round dense icon="menu" class="absolute-left ml-5" />
+      </div>
+      <q-route-tab 
+        name="Daily" 
+        icon="event" 
+        label="Daily" 
+        to="/" exact 
+      />
       <q-route-tab
         name="Sprint"
         icon="replay_circle_filled"
@@ -10,16 +18,24 @@
         exact
       />
       <q-route-tab
-        name="Backlog"
+        name="Kanban"
         icon="post_add"
-        label="Backlog"
-        to="/prueba"
+        label="Kanban"
+        to="/kanban"
         exact
       />
-    </q-tabs>
+      <q-route-tab 
+        name="Login/Register" 
+        icon="event" 
+        label="Login/Register" 
+        to="/login" exact 
+      />
+      </q-tabs>
   </div>
 </template>
 
 <script>
-export default {};
+export default {
+  components: {},
+}
 </script>

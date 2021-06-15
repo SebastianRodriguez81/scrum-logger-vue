@@ -22,8 +22,8 @@ const routes = [
         component: () => import('../views/Default.vue')
     },
     {
-        path: "/prueba",
-        name: "prueba",
+        path: "/kanban",
+        name: "kanban",
         component: () => import('../views/Default.vue')
     },
     {
@@ -35,6 +35,16 @@ const routes = [
         path: "/prueba3",
         name: "prueba3",
         component: () => import('../views/Default.vue')
+    },
+    {
+        path: "/login",
+        name: "login",
+        component: () => import('../views/Login.vue')
+    },
+    {
+        path: "/register",
+        name: "register",
+        component: () => import('../views/Register.vue')
     }
 ]
 

@@ -1,32 +1,34 @@
 <template>
-  <div v-if="loading" class="fixed-center">
-    <Spinner></Spinner>
-  </div>
-  <div v-if="loadFull" class="q-pa-md">
-    <div v-if="!modificacion" class="row justify-left q-gutter-xl bg-black">
-      <q-intersection
-        v-for="logitem in logitems"
-        :key="logitem.id"
-        once
-        transition="scale"
-        class=""
-      >
-        <LogCard
-          @LogChange="logChanged"
-          :id="logitem.id"
-          :fecha="logitem.fecha"
-          :ayer="logitem.ayer"
-          :hoy="logitem.hoy"
-        ></LogCard>
-      </q-intersection>
+  <div>
+    <div v-if="loading" class="fixed-center">
+      <Spinner></Spinner>
     </div>
-    <LogBox
-      @LogBoxEmit="LogBoxEmited"
-      v-if="modificacion"
-      :idp="item.id"
-      :ayerp="item.ayer"
-      :hoyp="item.hoy"
-    ></LogBox>
+    <div v-if="loadFull" class="q-pa-md">
+      <div v-if="!modificacion" class="row justify-left q-gutter-xl bg-blue-500">
+        <q-intersection
+          v-for="logitem in logitems"
+          :key="logitem.id"
+          once
+          transition="scale"
+          class=""
+        >
+          <LogCard
+            @LogChange="logChanged"
+            :id="logitem.id"
+            :fecha="logitem.fecha"
+            :ayer="logitem.ayer"
+            :hoy="logitem.hoy"
+          ></LogCard>
+        </q-intersection>
+      </div>
+      <LogBox
+        @LogBoxEmit="LogBoxEmited"
+        v-if="modificacion"
+        :idp="item.id"
+        :ayerp="item.ayer"
+        :hoyp="item.hoy"
+      ></LogBox>
+    </div>
   </div>
 </template>
 

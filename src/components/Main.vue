@@ -1,6 +1,8 @@
 <template>
+  <div>
   <NavBar />
   <SideBar :Routes="$store.state.Routes" />
+  </div>
 </template>
 
 <script>

@@ -23,12 +23,13 @@
         transition-prev="fade"
         transition-next="fade"
       >
-        <q-tab-panel class="bg-blue-100"
+        <q-tab-panel class="bg-blue-500"
           v-for="Route in Routes"
           :key="Route.nro"
           :name="Route.name"
         >        
-          <div class="text-h4 q-mb-md text-pink-700 " >{{ Route.label }}</div>          
+          <div class="text-weight-bold text-h4 q-mb-md text-pink-300 uppercase">{{ Route.label }}</div>  
+          <hr>           
         </q-tab-panel>
       </q-tab-panels>
       <Body />
