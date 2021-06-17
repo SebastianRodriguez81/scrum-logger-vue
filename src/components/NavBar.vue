@@ -25,10 +25,10 @@
         exact
       />
       <q-route-tab 
-        name="Login/Register" 
+        name="Usuario" 
         icon="event" 
-        label="Login/Register" 
-        to="/login" exact 
+        label="Usuario" 
+        to="/usuario" exact 
       />
       </q-tabs>
   </div>

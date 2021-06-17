@@ -25,6 +25,7 @@ const navRoutesViews = [
   { name: "login", viewRoutes: navRoutes[0]},
   { name: "register", viewRoutes: navRoutes[0]},
   { name: "kanban", viewRoutes: navRoutes[1]},
+  { name: "usuario", viewRoutes: navRoutes[1]},
 ]
 
 export default {
