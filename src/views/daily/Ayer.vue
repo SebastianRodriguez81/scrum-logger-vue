@@ -6,15 +6,18 @@
     <Prueba />
     <Prueba />
     <Prueba />
+    <LogOut />
   </div>
 </template>
 
 <script>
-import Prueba from "../../components/Prueba";
+import Prueba from "../../components/Prueba.vue"
+import LogOut from "../../components/Logout.vue"
 
 export default {
   components: {
     Prueba,
+    LogOut
   },
 };
 </script>

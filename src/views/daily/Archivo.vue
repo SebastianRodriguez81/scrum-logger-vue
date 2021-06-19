@@ -27,8 +27,9 @@
         :idp="item.id"
         :ayerp="item.ayer"
         :hoyp="item.hoy"
-      ></LogBox>
+      ></LogBox>      
     </div>
+  <LogOut />
   </div>
 </template>
 
@@ -37,12 +38,15 @@ import LogItem from "../../modules/daily/domain/LogItem";
 import LogCard from "../../modules/daily/components/LogCard";
 import LogBox from "../../modules/daily/components/LogBox";
 import Spinner from "../../components/Spinner";
+import LogOut from "../../components/Logout";
+
 
 export default {
   components: {
     LogCard,
     LogBox,
     Spinner,
+    LogOut
   },
 
   data() {

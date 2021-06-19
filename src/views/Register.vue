@@ -27,8 +27,8 @@ export default {
       firebase
           .auth()
           .createUserWithEmailAndPassword(email.value, password.value)
-          .then(user => {
-            alert(user)
+          .then(() => {
+            alert('Registro exitoso')
           })
           .catch(err => {
             alert(err.message)

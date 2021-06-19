@@ -55,10 +55,10 @@ export default {
       },
       {
         nro: 5,
-        name: "TAB 5",
-        icon: "warning_amber",
-        label: "TAB 5",
-        to: "/prueba3",
+        name: "Usuario",
+        icon: "account_circle",
+        label: "usuario",
+        to: "/usuario",
       },
     ]);
   },

@@ -3,7 +3,7 @@
   <div class="h-screen bg-blue-500">
     <Main />
   </div>
-  <Navigator />
+    <Navigator />
   </div>
 </template>
 

@@ -26,7 +26,7 @@
       />
       <q-route-tab 
         name="Usuario" 
-        icon="event" 
+        icon="account_circle" 
         label="Usuario" 
         to="/usuario" exact 
       />
