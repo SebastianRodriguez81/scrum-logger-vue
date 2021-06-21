@@ -22,6 +22,7 @@
 
 <script>
 import firebase from "firebase";
+import router from "../router"
 
 export default {
   name: "Logout",
@@ -32,6 +33,7 @@ export default {
         .auth()
         .signOut()
         .then(() => console.log("Signed out"))
+        .then(()=>router.push({name:'login'}))
         .catch((err) => alert(err.message));
     };
     return {

@@ -11,9 +11,9 @@
             </q-avatar>
           </q-item-section>
 
-          <q-item-section class="textoAvatar">
+          <q-item-section class="textoAvatar rainbow">
             <q-item-label>Ricardo Montaner</q-item-label>
-            <q-item-label caption>Cantante</q-item-label>
+            <q-item-label class="rainbow2" caption>Cantante</q-item-label>
           </q-item-section>
         </q-item>
 
@@ -33,5 +33,26 @@
 }
 .textoAvatar {
   font-size: 2rem;
+}
+
+.rainbow {
+  color: #eb6fad;
+  animation-name: rainbow;
+  animation-duration: 5s;
+}
+
+.rainbow2 {
+  color: #eb6fad;
+  animation-name: rainbow;
+  animation-duration: 15s;
+}
+
+@keyframes rainbow {
+  from {
+    color: rgb(255, 255, 255);
+  }
+  to {
+    color: #eb6fad;
+  }
 }
 </style>

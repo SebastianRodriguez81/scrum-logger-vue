@@ -1,7 +1,7 @@
 <template>
   <div class="q-gutter-y-md" style="">
     <q-tabs v-model="tab" inline-label class="bg-pink-500 text-white shadow-2">
-      <div class="">
+      <!-- <div class="">
         <q-btn
           flat
           @click="drawer = !drawer"
@@ -10,7 +10,7 @@
           icon="menu"
           class="absolute-left ml-5"
         />
-      </div>
+      </div> -->
       <q-route-tab
         @click="rutear('/logger/daily')"
         name="Daily"
@@ -45,16 +45,23 @@ export default {
 
   methods: {
     rutear(ruta) {
-      const routes =  this.$router.getRoutes().find(route => route.path === ruta).children;
-      let index = 1
+      const routes = this.$router
+        .getRoutes()
+        .find((route) => route.path === ruta).children;
+      let index = 1;
       const routex = [];
-      routes.forEach(route => {
-        routex.push({nro: index, name: route.name, label: route.name, icon: "event", to: ruta+'/'+route.path})
-        index ++;
-      })
-      console.log(routex)
+      routes.forEach((route) => {
+        routex.push({
+          nro: index,
+          name: route.name,
+          label: route.name,
+          icon: "event",
+          to: ruta + "/" + route.path,
+        });
+        index++;
+      });
+      console.log(routex);
       this.$store.commit("setRoutes", routex);
-      
     },
   },
 };
