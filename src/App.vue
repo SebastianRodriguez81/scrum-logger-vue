@@ -27,14 +27,14 @@ export default {
             }
           });
         } else {
-          next();
-        }
-
-        if (to.name == "daily") {
+          if (to.name == "daily") {
           next({ name: "hoy" });
         } else {
           next();
         }
+        }
+
+        
       });
     });
   },
