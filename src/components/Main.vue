@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="bg-blue-500">
     <NavBar />
     <router-view></router-view>
     <Logout />
