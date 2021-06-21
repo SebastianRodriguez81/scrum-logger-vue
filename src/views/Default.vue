@@ -13,6 +13,7 @@ import Logout from "../components/Logout"
 export default {
    components: {
     Logout
+    
   },
   created() {
     this.$store.commit("setRoutes", [
