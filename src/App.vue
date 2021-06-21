@@ -23,18 +23,20 @@ export default {
             if (!user) {
               next({ name: "login" });
             } else {
-              next();
+              if (to.name == "daily") {
+                next({ name: "hoy" });
+              } else {
+                next();
+              }
             }
           });
         } else {
           if (to.name == "daily") {
-          next({ name: "hoy" });
-        } else {
-          next();
+            next({ name: "hoy" });
+          } else {
+            next();
+          }
         }
-        }
-
-        
       });
     });
   },
