@@ -1,18 +1,19 @@
 <template>
   <div>
-  <NavBar />
-  <SideBar :Routes="$store.state.Routes" />
+    <NavBar />
+    <router-view></router-view>
+    <Logout />
   </div>
 </template>
 
 <script>
 import NavBar from "./NavBar";
-import SideBar from "./SideBar";
+import Logout from "./Logout";
 
 export default {
   components: {
     NavBar,
-    SideBar,
+    Logout,
   },
 };
 </script>
