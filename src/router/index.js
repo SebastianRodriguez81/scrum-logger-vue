@@ -35,8 +35,8 @@ const routes = [
                         component: () => import('../views/daily/Hoy.vue')
                     },
                     {
-                        path: "ayer",
-                        name: "ayer",
+                        path: "chart",
+                        name: "chart",
                         component: () => import('../views/daily/Ayer.vue')
                     },
                     {

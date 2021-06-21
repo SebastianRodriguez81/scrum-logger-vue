@@ -1,16 +1,48 @@
 <template>
-  <div class="col-4 p-3 mb-2 bg-primary text-white">
-    <div class="col-4">
-      <label> HOLA Por favor padre dame piernas </label>
-      <div  class="col-4">
-        <router-link to="/login" tag="button">login</router-link>
-      </div>
-      <div class="col-1">
-        <router-view></router-view>
-      </div>
-      <div>
-            <label> necesito un footer </label>
-      </div>
+  <div class="login">
+    <label class="titulo">SCRUMLOGGER</label>
+    <div class="login">
+      <router-view></router-view>
     </div>
   </div>
 </template>
+
+
+<script>
+import router from "../router";
+
+export default {
+  setup() {
+    router.push({ name: "login" }); 
+  },
+};
+</script>
+
+<style >
+div.login {
+
+  align-content: center;
+}
+label.titulo {
+  color: #eb6fad;
+  text-align: center;
+  display:block;
+  font-size: xxx-large;
+  width: 100%;
+  animation-name: rainbow;
+  animation-duration: 5s;
+}
+
+@keyframes rainbow {
+  from {
+    color: rgb(255, 255, 255);
+  }
+  to {
+    color: #eb6fad;
+  }
+}
+
+div.login {
+  background-color: #3b82f6;
+}
+</style>

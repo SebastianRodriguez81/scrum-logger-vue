@@ -6,19 +6,34 @@
 
 <script>
 import { onBeforeMount } from "vue";
-import { useRouter, useRoute } from "vue-router";
+import router from "./router";
 import firebase from "firebase";
 
 export default {
   setup() {
-    const router = useRouter();
-    const route = useRoute();
     onBeforeMount(() => {
-      firebase.auth().onAuthStateChanged((user) => {
-        if (!user) {
-          router.replace("/login");
-        } else if (route.path == "/login" || route.path == "/register") {
-          router.replace("/");
+      router.beforeEach((to, from, next) => {
+        if (
+          to.name != "welcome" &&
+          to.name != "login" &&
+          to.name != "register"
+        ) {
+          console.log(to);
+          firebase.auth().onAuthStateChanged((user) => {
+            if (!user) {
+              next({ name: "login" });
+            } else {
+              next();
+            }
+          });
+        } else {
+          next();
+        }
+
+        if (to.name == "daily") {
+          next({ name: "hoy" });
+        } else {
+          next();
         }
       });
     });

@@ -5,6 +5,7 @@ import store from "./store"
 import { Quasar } from 'quasar'
 import quasarUserOptions from './quasar-user-options'
 import firebase from 'firebase'
+import VueApexCharts from "vue3-apexcharts";
 
 
 const firebaseConfig = {
@@ -23,4 +24,5 @@ const app = createApp(App);
 app.use(Quasar, quasarUserOptions);
 app.use(router);
 app.use(store);
+app.use(VueApexCharts);
 app.mount("#app");
